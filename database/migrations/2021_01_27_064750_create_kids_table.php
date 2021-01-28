@@ -4,29 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateKidsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-
-     // this table is for guardians
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('kids', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // this is the guardian ID
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('username')->unique(); 
-            $table->string('contact_number');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('kid_relationship');
             $table->timestamps();
         });
     }
@@ -38,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('kids');
     }
 }
