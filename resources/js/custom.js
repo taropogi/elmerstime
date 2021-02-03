@@ -1,4 +1,4 @@
 
 $(document).ready(function () {
-    //alert('this should show');
+    alert('yow laravel mix');
 });

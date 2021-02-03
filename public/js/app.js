@@ -331,7 +331,7 @@ eval("window._ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodas
   \********************************/
 /***/ (() => {
 
-eval("$(document).ready(function () {//alert('this should show');\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvY3VzdG9tLmpzP2IxZDIiXSwibmFtZXMiOlsiJCIsImRvY3VtZW50IiwicmVhZHkiXSwibWFwcGluZ3MiOiJBQUNBQSxDQUFDLENBQUNDLFFBQUQsQ0FBRCxDQUFZQyxLQUFaLENBQWtCLFlBQVksQ0FDMUI7QUFDSCxDQUZEIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uICgpIHtcclxuICAgIC8vYWxlcnQoJ3RoaXMgc2hvdWxkIHNob3cnKTtcclxufSk7Il0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9jdXN0b20uanMuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/custom.js\n");
+eval("$(document).ready(function () {\n  alert('yow laravel mix');\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvY3VzdG9tLmpzP2IxZDIiXSwibmFtZXMiOlsiJCIsImRvY3VtZW50IiwicmVhZHkiLCJhbGVydCJdLCJtYXBwaW5ncyI6IkFBQ0FBLENBQUMsQ0FBQ0MsUUFBRCxDQUFELENBQVlDLEtBQVosQ0FBa0IsWUFBWTtBQUMxQkMsRUFBQUEsS0FBSyxDQUFDLGlCQUFELENBQUw7QUFDSCxDQUZEIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uICgpIHtcclxuICAgIGFsZXJ0KCd5b3cgbGFyYXZlbCBtaXgnKTtcclxufSk7Il0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9jdXN0b20uanMuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/custom.js\n");
 
 /***/ }),
 
