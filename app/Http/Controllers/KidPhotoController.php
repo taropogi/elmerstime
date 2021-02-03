@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kid;
 use Illuminate\Http\Request;
 
-class KidController extends Controller
+class KidPhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,6 @@ class KidController extends Controller
      */
     public function index()
     {
-
-        return view('kid.index');
         //
     }
 
@@ -43,10 +40,10 @@ class KidController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kid  $kid
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Kid $kid)
+    public function show($id)
     {
         //
     }
@@ -54,10 +51,10 @@ class KidController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kid  $kid
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kid $kid)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +63,10 @@ class KidController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kid  $kid
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kid $kid)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +74,10 @@ class KidController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kid  $kid
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kid $kid)
+    public function destroy($id)
     {
         //
     }

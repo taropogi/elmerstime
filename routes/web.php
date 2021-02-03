@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\KidController;
 
 
 
@@ -18,9 +20,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 
 //Route::get('/',[LoginController::class,'index']);
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
 
 Route::get('/login', [LoginController::class, 'index']);
@@ -29,3 +29,5 @@ Route::get('/login', [LoginController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/kids', [App\Http\Controllers\KidController::class, 'index'])->name('kids');
