@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
- 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +23,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login',[LoginController::class,'index']);
+Route::get('/login', [LoginController::class, 'index']);
 
+//It's a class inside vendor, in laravel 8 it's vendor/laravel/ui/src/AuthRouteMethods.php
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
