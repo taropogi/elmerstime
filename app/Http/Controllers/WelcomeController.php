@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Photo;
 
 class WelcomeController extends Controller
 {
@@ -12,6 +13,7 @@ class WelcomeController extends Controller
     }
     public function index()
     {
-        return view('welcome.index');
+        $data['photos'] = Photo::all();
+        return view('welcome.index', $data);
     }
 }
