@@ -19,8 +19,8 @@ class KidController extends Controller
     }
     public function index()
     {
-
-        return view('kid.index');
+        $data['kids'] = auth()->user()->kids;
+        return view('kid.index', $data);
         //
     }
 
@@ -31,6 +31,7 @@ class KidController extends Controller
      */
     public function create()
     {
+
         return view('kid.create');
     }
 
@@ -45,11 +46,13 @@ class KidController extends Controller
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
+            'relationship' => 'required',
         ]);
 
         $request->user()->kids()->create([
             'first_name' => $request->first_name,
-            'last_name' => $request->last_name
+            'last_name' => $request->last_name,
+            'kid_relationship' => $request->relationship
         ]);
         return back();
     }
@@ -62,7 +65,8 @@ class KidController extends Controller
      */
     public function show(Kid $kid)
     {
-        //
+        $data['kid'] = $kid;
+        return view('kid.show', $data);
     }
 
     /**

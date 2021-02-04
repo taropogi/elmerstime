@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KidController;
+use App\Http\Controllers\KidPhotoController;
 
 
 
@@ -30,6 +31,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/kids', [App\Http\Controllers\KidController::class, 'index'])->name('kids');
-Route::get('/kids/register', [App\Http\Controllers\KidController::class, 'create'])->name('kids.register');
-Route::post('/kids', [App\Http\Controllers\KidController::class, 'store'])->name('kids.store');
+Route::get('/entrants', [App\Http\Controllers\KidController::class, 'index'])->name('kids');
+Route::get('/entrants/register', [App\Http\Controllers\KidController::class, 'create'])->name('kids.register');
+Route::post('/entrants', [App\Http\Controllers\KidController::class, 'store'])->name('kids.store');
+Route::get('/entrants/{kid}', [App\Http\Controllers\KidController::class, 'show'])->name('kids.gallery');
+
+
+Route::post('/entrants/{kid}/photo', [App\Http\Controllers\KidPhotoController::class, 'store'])->name('kids.photo.store');

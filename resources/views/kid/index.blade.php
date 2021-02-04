@@ -5,17 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">Registered Entrants</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
                     <div>
-                        Kids : {{ auth()->user()->kids()->count() }}
+                        Kids : {{ $kids->count() }}
                     </div>
                     <div>
                         <a class="btn btn-primary" href="{{ route('kids.register') }}" role="button">Register Kid</a>
@@ -24,13 +18,19 @@
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Realationship</th>
+                                    <th scope="col">Gallery Photos</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(auth()->user()->kids as $kid)
+                                @foreach($kids as $kid)
                                 <tr>
-                                    <td>{{ $kid->full_name() }}</td>
+                                    <td>
+                                        <a href="{{ route('kids.gallery',$kid) }}">
+                                            {{ $kid->full_name() }}
+                                        </a>
+                                    </td>
                                     <td>{{ $kid->kid_relationship }}</td>
+                                    <td>{{ $kid->photos()->count() }}</td>
                                 </tr>
                                 @endforeach
 

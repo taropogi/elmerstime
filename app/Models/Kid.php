@@ -11,7 +11,8 @@ class Kid extends Model
 
     protected $fillable = [
         'first_name',
-        'last_name'
+        'last_name',
+        'kid_relationship',
     ];
 
     public function photos()
