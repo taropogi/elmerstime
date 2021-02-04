@@ -14,10 +14,31 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
-
                     <div>
                         Kids : {{ auth()->user()->kids()->count() }}
+                    </div>
+                    <div>
+                        <a class="btn btn-primary" href="{{ route('kids.register') }}" role="button">Register Kid</a>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Realationship</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(auth()->user()->kids as $kid)
+                                <tr>
+                                    <td>{{ $kid->full_name() }}</td>
+                                    <td>{{ $kid->kid_relationship }}</td>
+                                </tr>
+                                @endforeach
+
+
+                            </tbody>
+                        </table>
+
+
                     </div>
                 </div>
             </div>

@@ -16,10 +16,10 @@ class CreateKidsTable extends Migration
         Schema::create('kids', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // this is the guardian ID
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('last_name');
-            $table->string('kid_relationship');
+            $table->string('first_name')->nullable();
+            $table->string('middle_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('kid_relationship')->nullable();
             $table->timestamps();
         });
     }

@@ -12,6 +12,11 @@ class KidController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
 
@@ -26,7 +31,7 @@ class KidController extends Controller
      */
     public function create()
     {
-        //
+        return view('kid.create');
     }
 
     /**
@@ -37,7 +42,16 @@ class KidController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+        ]);
+
+        $request->user()->kids()->create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name
+        ]);
+        return back();
     }
 
     /**

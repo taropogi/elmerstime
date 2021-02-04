@@ -31,3 +31,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/kids', [App\Http\Controllers\KidController::class, 'index'])->name('kids');
+Route::get('/kids/register', [App\Http\Controllers\KidController::class, 'create'])->name('kids.register');
+Route::post('/kids', [App\Http\Controllers\KidController::class, 'store'])->name('kids.store');
