@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KidController;
 use App\Http\Controllers\KidPhotoController;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -38,3 +39,6 @@ Route::get('/entrants/{kid}', [App\Http\Controllers\KidController::class, 'show'
 
 
 Route::post('/entrants/{kid}/photo', [App\Http\Controllers\KidPhotoController::class, 'store'])->name('kids.photo.store');
+
+
+Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
