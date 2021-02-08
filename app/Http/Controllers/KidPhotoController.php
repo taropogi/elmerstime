@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kid;
+use App\Mail\NotifyAdminNewPhoto;
+use Illuminate\Support\Facades\Mail;
 
 class KidPhotoController extends Controller
 {
@@ -42,6 +44,12 @@ class KidPhotoController extends Controller
         $kid->photos()->create([
             'file_name' => $image_name
         ]);
+
+        $emailDetails = [
+            'title' => 'New Photo Uploaded', 'body' => 'This is the phot uploaded'
+        ];
+
+        Mail::to('kutaropogi@gmail.com')->send(new NotifyAdminNewPhoto($emailDetails));
         return back();
     }
 

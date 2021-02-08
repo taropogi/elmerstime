@@ -13,7 +13,7 @@ class WelcomeController extends Controller
     }
     public function index()
     {
-        $data['photos'] = Photo::all();
+        $data['photos'] = Photo::where('approved', 1)->get();
         return view('welcome.index', $data);
     }
 }

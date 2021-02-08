@@ -42,3 +42,6 @@ Route::post('/entrants/{kid}/photo', [App\Http\Controllers\KidPhotoController::c
 
 
 Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
+
+Route::post('/admin/photos/{photo}/deny', [App\Http\Controllers\AdminController::class, 'denyPhoto'])->name('admin.photos.deny');
+Route::post('/admin/photos/{photo}/approve', [App\Http\Controllers\AdminController::class, 'approvePhoto'])->name('admin.photos.approve');
