@@ -15,10 +15,17 @@ class Photo extends Model
 
     public function status_alert()
     {
-        if ($this->approved) {
+        if ($this->evaluated && $this->approved) {
             return '<span class="badge badge-success">Approved</span>';
+        } elseif ($this->evaluated && !$this->approved) {
+            return '<span class="badge badge-danger">Denied</span>';
         } else {
             return '<span class="badge badge-warning">Pending</span>';
         }
+    }
+
+    public function kid()
+    {
+        return $this->belongsTo(Kid::class);
     }
 }

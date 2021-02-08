@@ -27,11 +27,11 @@
                                     {!! $photo->status_alert() !!}
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.photos.approve',$photo) }}" method="POST">
+                                    <form class="form-inline pull-left" action="{{ route('admin.photos.approve',$photo) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-primary">Approve</button>
                                     </form>
-                                    <form action="{{ route('admin.photos.deny',$photo) }}" method="POST">
+                                    <form class="form-inline pull-left" action="{{ route('admin.photos.deny',$photo) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Deny</button>
                                     </form>

@@ -20,6 +20,11 @@ class Kid extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function full_name()
     {
         return $this->first_name . ' ' . $this->last_name;

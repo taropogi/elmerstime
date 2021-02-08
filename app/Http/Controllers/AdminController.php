@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function index()
     {
         $data = [
-            'photos' => Photo::get(),
+            'photos' => Photo::where('evaluated', false)->get(),
         ];
         return view('admin.index', $data);
     }
@@ -33,7 +33,7 @@ class AdminController extends Controller
         $photo->evaluated = 1;
         $photo->save();
 
-        Mail::to('taropogi_123@yahoo.com')->send(new PhotoDenied());
+        Mail::to($photo->kid->user->email)->send(new PhotoDenied());
 
 
         return back();
