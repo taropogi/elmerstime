@@ -11,159 +11,106 @@
 <a class="btn btn-danger" href="{{ route('register') }}" role="button">
     First time to register? Register here
 </a>-->
+
 <style>
-    .btn:focus,
-    .btn:active,
-    button:focus,
-    button:active {
-        outline: none !important;
-        box-shadow: none !important;
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
-    #image-gallery .modal-footer {
-        display: block;
-    }
-
-    .thumb {
-        margin-top: 15px;
-        margin-bottom: 15px;
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
     }
 </style>
 
-<h1 class="text-center">NATIONAL GALLERY</h1>
+<style>
+    .jumbotron {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        margin-bottom: 0;
+        background-color: #fff;
+    }
 
-<div class="container">
-    <div class="row">
-        <div class="row">
-            @foreach($photos as $photo)
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="" data-image="https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" data-target="#image-gallery">
-                    <img class="img-thumbnail" src="{{ asset('images/gallery/'.$photo->file_name) }}" alt="Another alt text">
-                </a>
-            </div>
-            @endforeach
+    @media (min-width: 768px) {
+        .jumbotron {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+    }
+
+    .jumbotron p:last-child {
+        margin-bottom: 0;
+    }
+
+    .jumbotron h1 {
+        font-weight: 300;
+    }
+
+    .jumbotron .container {
+        max-width: 40rem;
+    }
+
+    footer {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    footer p {
+        margin-bottom: .25rem;
+    }
+</style>
 
 
+<main role="main">
+
+    <section class="jumbotron text-center pb-2 pt-2">
+        <div class="container">
+            <h1>National Gallery</h1>
         </div>
+    </section>
 
+    <div class="album py-5 bg-light">
+        <div class="container">
 
-        <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="image-gallery-title"></h4>
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img id="image-gallery-image" class="img-responsive col-md-12" src="">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i class="fa fa-arrow-left"></i>
-                        </button>
+            <div class="row">
+                @foreach($photos as $photo)
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#55595c" />
+                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                            <image href="{{ asset('images/gallery/'.$photo->file_name) }}" height="225" width="100%" />
+                        </svg>
 
-                        <button type="button" id="show-next-image" class="btn btn-secondary float-right"><i class="fa fa-arrow-right"></i>
-                        </button>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Image description
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">{{ $photo->created_at->diffForHumans() }}</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    let modalId = $('#image-gallery');
+</main>
 
-    $(document)
-        .ready(function() {
 
-            loadGallery(true, 'a.thumbnail');
 
-            //This function disables buttons when needed
-            function disableButtons(counter_max, counter_current) {
-                $('#show-previous-image, #show-next-image')
-                    .show();
-                if (counter_max === counter_current) {
-                    $('#show-next-image')
-                        .hide();
-                } else if (counter_current === 1) {
-                    $('#show-previous-image')
-                        .hide();
-                }
-            }
-
-            /**
-             *
-             * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
-             * @param setClickAttr  Sets the attribute for the click handler.
-             */
-
-            function loadGallery(setIDs, setClickAttr) {
-                let current_image,
-                    selector,
-                    counter = 0;
-
-                $('#show-next-image, #show-previous-image')
-                    .click(function() {
-                        if ($(this)
-                            .attr('id') === 'show-previous-image') {
-                            current_image--;
-                        } else {
-                            current_image++;
-                        }
-
-                        selector = $('[data-image-id="' + current_image + '"]');
-                        updateGallery(selector);
-                    });
-
-                function updateGallery(selector) {
-                    let $sel = selector;
-                    current_image = $sel.data('image-id');
-                    $('#image-gallery-title')
-                        .text($sel.data('title'));
-                    $('#image-gallery-image')
-                        .attr('src', $sel.data('image'));
-                    disableButtons(counter, $sel.data('image-id'));
-                }
-
-                if (setIDs == true) {
-                    $('[data-image-id]')
-                        .each(function() {
-                            counter++;
-                            $(this)
-                                .attr('data-image-id', counter);
-                        });
-                }
-                $(setClickAttr)
-                    .on('click', function() {
-                        updateGallery($(this));
-                    });
-            }
-        });
-
-    // build key actions
-    $(document)
-        .keydown(function(e) {
-            switch (e.which) {
-                case 37: // left
-                    if ((modalId.data('bs.modal') || {})._isShown && $('#show-previous-image').is(":visible")) {
-                        $('#show-previous-image')
-                            .click();
-                    }
-                    break;
-
-                case 39: // right
-                    if ((modalId.data('bs.modal') || {})._isShown && $('#show-next-image').is(":visible")) {
-                        $('#show-next-image')
-                            .click();
-                    }
-                    break;
-
-                default:
-                    return; // exit this handler for other keys
-            }
-            e.preventDefault(); // prevent the default action (scroll / move caret)
-        });
-</script>
 
 @endsection

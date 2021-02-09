@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'email' => 'taropogi_123@yahoo.com',
                 'is_admin' => '1',
                 'password' => bcrypt('tarotaro'),
+                'email_verified_at' => date('Y-m-d H:i:s'),
             ],
         ];
 

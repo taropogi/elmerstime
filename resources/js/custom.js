@@ -1,4 +1,2 @@
-
-$(document).ready(function () {
-    //alert('yow laravel mix');
-});
+baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
+    alert('taro');
