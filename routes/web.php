@@ -28,7 +28,7 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 
 //It's a class inside vendor, in laravel 8 it's vendor/laravel/ui/src/AuthRouteMethods.php
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

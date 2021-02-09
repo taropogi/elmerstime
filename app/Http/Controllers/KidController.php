@@ -17,6 +17,7 @@ class KidController extends Controller
     {
         $this->middleware([
             'auth',
+            'verified',
             'is_user'
         ]);
     }
