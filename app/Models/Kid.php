@@ -20,6 +20,11 @@ class Kid extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function approvedPhotos()
+    {
+        return $this->photos()->where('approved', 1);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

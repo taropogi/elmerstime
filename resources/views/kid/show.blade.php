@@ -5,7 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ $kid->full_name() }} Gallery | {{ $kid->photos()->count() }} Photos</div>
+                <div class="card-header">
+                    {{ $kid->full_name() }} Gallery | {{ $kid->photos()->count() }} Photos
+                    <span class="float-right">
+                        <i class="fa fa-star" style="color:red;" aria-hidden="true"></i>
+                        {{ $kid->approvedPhotos()->count() }}
+                    </span>
+                </div>
 
                 <div class="card-body">
                     <form action="{{ route('kids.photo.store',$kid) }}" method="POST" enctype="multipart/form-data">
@@ -33,6 +39,7 @@
                                 </td>
                                 <td>
                                     {!! $photo->status_alert() !!}
+
                                 </td>
                                 <td>
                                     <a class="btn btn-danger" href="#" role="button">Delete</a>

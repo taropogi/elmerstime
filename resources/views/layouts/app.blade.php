@@ -78,7 +78,7 @@
 
 
 
-        <main class="py-4">
+        <main class="py-4 container-fluid">
             @yield('content')
         </main>
     </div>
