@@ -22,6 +22,15 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('tarotaro'),
                 'email_verified_at' => date('Y-m-d H:i:s'),
             ],
+            [
+                'name' => 'Richard Bernisca',
+                'first_name' => 'Richard',
+                'last_name' => 'Bernisca',
+                'email' => 'taro@taro.com',
+                'is_admin' => '0',
+                'password' => bcrypt('tarotaro'),
+                'email_verified_at' => date('Y-m-d H:i:s'),
+            ],
         ];
 
         foreach ($user as $key => $value) {

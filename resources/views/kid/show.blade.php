@@ -19,6 +19,12 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="photo" name="photo" required>
                             <label class="custom-file-label" for="photo">Choose file</label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Decription</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

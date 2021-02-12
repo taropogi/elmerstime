@@ -42,7 +42,8 @@ class KidPhotoController extends Controller
         $image->move(public_path('images/gallery/'), $image_name);
 
         $kid->photos()->create([
-            'file_name' => $image_name
+            'file_name' => $image_name,
+            'description' => $request->description,
         ]);
 
         $emailDetails = [

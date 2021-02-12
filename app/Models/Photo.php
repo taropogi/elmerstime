@@ -10,7 +10,8 @@ class Photo extends Model
     use HasFactory;
 
     protected $fillable = [
-        "file_name"
+        "file_name",
+        "description",
     ];
 
     public function status_alert()

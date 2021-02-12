@@ -17,8 +17,10 @@ class CreatePhotosTable extends Migration
             $table->id();
             $table->foreignId('kid_id')->constrained()->onDelete('cascade');
             $table->string('file_name');
+            $table->string('description', 200)->nullable();
             $table->boolean('approved')->default(false);
             $table->boolean('evaluated')->default(false);
+            $table->timestamp('approved_at')->nullable();
             $table->timestamps();
         });
     }

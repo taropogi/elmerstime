@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Photo;
-use App\Mail\PhotoApproved;
 use App\Mail\PhotoDenied;
+use App\Mail\PhotoApproved;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
@@ -31,6 +32,7 @@ class AdminController extends Controller
     {
         $photo->approved = 0;
         $photo->evaluated = 1;
+
         $photo->save();
 
         Mail::to($photo->kid->user->email)->send(new PhotoDenied());
@@ -43,9 +45,10 @@ class AdminController extends Controller
     {
         $photo->approved = 1;
         $photo->evaluated = 1;
+        $photo->approved_at = Carbon::now();
         $photo->save();
 
-        Mail::to('taropogi_123@yahoo.com')->send(new PhotoApproved());
+        Mail::to($photo->kid->user->email)->send(new PhotoApproved());
 
 
         return back();
