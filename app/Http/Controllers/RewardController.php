@@ -12,9 +12,16 @@ class RewardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $data['rewards'] = Reward::latest()->get();
+        return view('reward.index', $data);
     }
 
     /**
@@ -24,7 +31,7 @@ class RewardController extends Controller
      */
     public function create()
     {
-        //
+        return view('reward.create');
     }
 
     /**
@@ -33,9 +40,20 @@ class RewardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Reward $reward)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'stars' => 'required',
+        ]);
+
+        $reward->create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'stars_required' => $request->stars
+        ]);
+        return redirect()->route('admin.rewards');
     }
 
     /**

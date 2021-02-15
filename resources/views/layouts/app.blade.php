@@ -39,7 +39,7 @@
                     @auth()
                     <ul class="navbar-nav mr-auto">
                         @if(!auth()->user()->is_admin)
-                        <li class="nav-item active">
+                        <li class="nav-item {{ Request::segment(1)==='entrants' ? 'active' : '' }}">
                             <a class="nav-link" href="{{ url('/') }}">Kids</a>
                         </li>
                         @endif
@@ -47,10 +47,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Pending Photos</a>
                         </li>
-                        @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">National Gallery</a>
+                        <li class="nav-item {{ Request::segment(1)==='rewards' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.rewards') }}">Rewards</a>
                         </li>
+                        @endif
+
+
+                        <li class="nav-item {{ Request::segment(1)==='gallery' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('gallery') }}">National Gallery</a>
+                        </li>
+
                     </ul>
                     @endauth()
 

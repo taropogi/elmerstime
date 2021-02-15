@@ -20,7 +20,8 @@
                             <tr>
                                 <th scope="col">Photo</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Approve</th>
+                                <th scope="col">Deny</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,8 @@
                                         @csrf
                                         <button type="submit" class="btn btn-primary">Approve</button>
                                     </form>
+                                </td>
+                                <td>
                                     <form class="form-inline pull-left" action="{{ route('admin.photos.deny',$photo) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Deny</button>

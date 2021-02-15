@@ -24,9 +24,10 @@ class KidPhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Kid $kid)
     {
-        //
+        $data['kid'] = $kid;
+        return view('kid.photo.create', $data);
     }
 
     /**
@@ -51,7 +52,7 @@ class KidPhotoController extends Controller
         ];
 
         Mail::to('kutaropogi@gmail.com')->send(new NotifyAdminNewPhoto($emailDetails));
-        return back();
+        return redirect()->route('kids.gallery', $kid);
     }
 
     /**

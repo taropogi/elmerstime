@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 
 <style>
@@ -61,13 +62,7 @@
 
     <section class="jumbotron text-center pb-2 pt-2">
         <div class="container">
-            <h1>{{ $kid->first_name }}'s Gallery</h1>
-            {{ $kid->photos()->count() }} Photos
-            <span class="float-right">
-                <i class="fa fa-star" style="color:red;" aria-hidden="true"></i>
-                {{ $kid->approvedPhotos()->count() }}
-            </span>
-            <a class="btn btn-primary" href="{{ route('kids.photo.create',$kid) }}" role="button">Upload Photo</a>
+            <h1>National Gallery</h1>
         </div>
     </section>
 
@@ -75,7 +70,7 @@
 
 
         <div class="row">
-            @foreach($kid->photos as $photo)
+            @foreach($photos as $photo)
             <div class="col-md-3">
                 <div class="card mb-4 shadow-sm">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -87,7 +82,7 @@
 
                     <div class="card-body">
                         <p class="card-text">
-                            {!! $photo->status_alert() !!}
+                            Image description
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
@@ -105,4 +100,8 @@
     </div>
 
 </main>
+
+
+
+
 @endsection

@@ -15,6 +15,9 @@ class CreateRewardsTable extends Migration
     {
         Schema::create('rewards', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('stars_required')->nullable();
             $table->timestamps();
         });
     }

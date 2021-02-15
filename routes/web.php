@@ -6,6 +6,8 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KidController;
 use App\Http\Controllers\KidPhotoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RewardController;
+use App\Models\Photo;
 
 
 
@@ -35,9 +37,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/entrants', [App\Http\Controllers\KidController::class, 'index'])->name('kids');
 Route::get('/entrants/register', [App\Http\Controllers\KidController::class, 'create'])->name('kids.register');
 Route::post('/entrants', [App\Http\Controllers\KidController::class, 'store'])->name('kids.store');
+
+
+
 Route::get('/entrants/{kid}', [App\Http\Controllers\KidController::class, 'show'])->name('kids.gallery');
 
-
+Route::get('/entrants/{kid}/add', [App\Http\Controllers\KidPhotoController::class, 'create'])->name('kids.photo.create');
 Route::post('/entrants/{kid}/photo', [App\Http\Controllers\KidPhotoController::class, 'store'])->name('kids.photo.store');
 
 
@@ -45,3 +50,16 @@ Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index']
 
 Route::post('/admin/photos/{photo}/deny', [App\Http\Controllers\AdminController::class, 'denyPhoto'])->name('admin.photos.deny');
 Route::post('/admin/photos/{photo}/approve', [App\Http\Controllers\AdminController::class, 'approvePhoto'])->name('admin.photos.approve');
+
+
+Route::get('/rewards', [App\Http\Controllers\RewardController::class, 'index'])->name('admin.rewards');
+Route::get('/rewards/add', [App\Http\Controllers\RewardController::class, 'create'])->name('admin.rewards.create');
+Route::post('/rewards', [App\Http\Controllers\RewardController::class, 'store'])->name('admin.rewards.store');
+//Route::get('/entrants/{kid}', [App\Http\Controllers\KidController::class, 'show'])->name('kids.gallery');
+
+
+
+Route::get('/gallery', function () {
+    $data['photos'] = Photo::where('approved', 1)->get();
+    return view('gallery.national', $data);
+})->name('gallery')->middleware('auth');
