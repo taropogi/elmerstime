@@ -20,6 +20,21 @@ class Kid extends Model
         return $this->hasMany(Photo::class)->orderBy('created_at', 'desc');
     }
 
+    public function claimed_rewards()
+    {
+        return $this->hasMany(ClaimedReward::class);
+    }
+
+    public function claimed_rewards_total()
+    {
+        return $this->claimed_rewards->sum('stars_used');
+    }
+
+    public function available_stars()
+    {
+        return $this->approvedPhotos->count() - $this->claimed_rewards_total();
+    }
+
     public function approvedPhotos()
     {
         return $this->photos()->where('approved', 1);

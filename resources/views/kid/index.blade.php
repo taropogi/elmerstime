@@ -19,6 +19,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Realationship</th>
                                     <th scope="col">Gallery Photos</th>
+                                    <th scope="col">Rewards</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,6 +32,9 @@
                                     </td>
                                     <td>{{ $kid->kid_relationship }}</td>
                                     <td>{{ $kid->photos()->count() }}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ route('entrant.rewards',$kid) }}" role="button">Claim</a>
+                                    </td>
                                 </tr>
                                 @endforeach
 

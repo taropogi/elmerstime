@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>New photo uploaded</h1>
+    <h1>New Photo Uploaded</h1>
 </body>
 
 </html>

@@ -7,6 +7,7 @@ use App\Http\Controllers\KidController;
 use App\Http\Controllers\KidPhotoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RewardController;
+use App\Http\Controllers\KidRewardController;
 use App\Models\Photo;
 
 
@@ -57,6 +58,9 @@ Route::get('/rewards/add', [App\Http\Controllers\RewardController::class, 'creat
 Route::post('/rewards', [App\Http\Controllers\RewardController::class, 'store'])->name('admin.rewards.store');
 //Route::get('/entrants/{kid}', [App\Http\Controllers\KidController::class, 'show'])->name('kids.gallery');
 
+//rewards per entrant
+Route::get('/entrants/{kid}/rewards', [App\Http\Controllers\KidRewardController::class, 'index'])->name('entrant.rewards');
+Route::post('/entrants/{kid}/rewards/claim/{reward}', [App\Http\Controllers\KidRewardController::class, 'claim_reward'])->name('entrant.rewards.claim');
 
 
 Route::get('/gallery', function () {

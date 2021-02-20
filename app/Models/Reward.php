@@ -17,4 +17,11 @@ class Reward extends Model
     ];
 
     use HasFactory;
+
+
+
+    public function claimed_rewards()
+    {
+        return $this->hasMany(ClaimedReward::class);
+    }
 }

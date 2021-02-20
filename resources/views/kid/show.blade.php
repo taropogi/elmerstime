@@ -63,10 +63,12 @@
         <div class="container">
             <h1>{{ $kid->first_name }}'s Gallery</h1>
             {{ $kid->photos()->count() }} Photos
-            <span class="float-right">
-                <i class="fa fa-star" style="color:red;" aria-hidden="true"></i>
-                {{ $kid->approvedPhotos()->count() }}
-            </span>
+            <a href="{{ route('entrant.rewards',$kid) }}">
+                <span class="float-right">
+                    <i class="fa fa-star" style="color:red;" aria-hidden="true"></i>
+                    {{ $kid->available_stars() }}
+                </span>
+            </a>
             <a class="btn btn-primary" href="{{ route('kids.photo.create',$kid) }}" role="button">Upload Photo</a>
         </div>
     </section>
