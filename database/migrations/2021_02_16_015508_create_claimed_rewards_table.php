@@ -15,7 +15,7 @@ class CreateClaimedRewardsTable extends Migration
     {
         Schema::create('claimed_rewards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kid_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('reward_id')->constrained()->onDelete('cascade');
             $table->integer('stars_used')->nullable();
             $table->timestamps();

@@ -40,7 +40,7 @@
                     <ul class="navbar-nav mr-auto">
                         @if(!auth()->user()->is_admin)
                         <li class="nav-item {{ Request::segment(1)==='entrants' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ url('/') }}">Kids</a>
+                            <a class="nav-link" href="{{ url('/') }}">Personal Gallery</a>
                         </li>
                         @endif
                         @if(auth()->user()->is_admin)

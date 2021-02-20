@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Notifications\CustomResetPasswordNotification;
+
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -47,9 +49,41 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function kids()
+    public function claimed_rewards_total()
     {
-        return $this->hasMany(Kid::class);
+        return $this->claimed_rewards->sum('stars_used');
+    }
+
+    public function available_stars()
+    {
+        return $this->approvedPhotos->count() - $this->claimed_rewards_total();
+    }
+
+    public function claimed_rewards()
+    {
+        return $this->hasMany(ClaimedReward::class);
+    }
+
+    public function photos()
+    {
+        return $this->hasMany(Photo::class)->orderBy('created_at', 'desc');
+    }
+
+    public function approvedPhotos()
+    {
+        return $this->photos()->where('approved', 1);
+    }
+
+
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPasswordNotification($token));
     }
 }

@@ -23,7 +23,7 @@ class KidController extends Controller
     }
     public function index()
     {
-        $data['kids'] = auth()->user()->kids;
+
         $data['user'] = auth()->user();
         return view('kid.index', $data);
         //

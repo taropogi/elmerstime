@@ -23,12 +23,20 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             // $table->string('email')->unique();
             // $table->string('username')->nullable();
-            $table->string('email'); // email of the guardian
+
             $table->string('username')->unique();
             $table->string('contact_number')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_admin')->default(false);
+
+            // Guardian info
+            $table->string('email'); // email of the guardian
+            $table->string('g_first_name')->nullable();
+            $table->string('g_middle_name')->nullable();
+            $table->string('g_last_name')->nullable();
+
+
             $table->rememberToken();
             $table->timestamps();
         });

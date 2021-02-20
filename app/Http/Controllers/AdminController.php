@@ -35,7 +35,7 @@ class AdminController extends Controller
 
         $photo->save();
 
-        Mail::to($photo->kid->user->email)->send(new PhotoDenied());
+        Mail::to($photo->user->email)->send(new PhotoDenied());
 
 
         return back();
@@ -48,7 +48,7 @@ class AdminController extends Controller
         $photo->approved_at = Carbon::now();
         $photo->save();
 
-        Mail::to($photo->kid->user->email)->send(new PhotoApproved());
+        Mail::to($photo->user->email)->send(new PhotoApproved());
 
 
         return back();

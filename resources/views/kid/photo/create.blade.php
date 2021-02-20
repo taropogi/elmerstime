@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add Photo for {{ $kid->full_name() }}</div>
+                <div class="card-header">Add Photo for {{ $user->name }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('kids.photo.store',$kid) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('kids.photo.store',$user) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="photo" name="photo" required>

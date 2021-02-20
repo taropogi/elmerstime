@@ -8,7 +8,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    {{ $kid->available_stars() }}
+                    {{ $user->available_stars() }}
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
@@ -25,7 +25,7 @@
                                 <td>{{ $reward->description }}</td>
                                 <td>{{ $reward->stars_required }}</td>
                                 <td>
-                                    <form action="{{ route('entrant.rewards.claim',[$kid,$reward]) }}" method="POST">
+                                    <form action="{{ route('entrant.rewards.claim',[$user,$reward]) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-primary">Claim</button>
                                     </form>

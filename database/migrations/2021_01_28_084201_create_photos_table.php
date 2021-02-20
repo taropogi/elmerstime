@@ -15,7 +15,7 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kid_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // this is the Entrant ID
             $table->string('file_name');
             $table->string('description', 200)->nullable();
             $table->boolean('approved')->default(false);

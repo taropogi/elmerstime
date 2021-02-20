@@ -41,16 +41,11 @@ Route::post('/entrants', [App\Http\Controllers\KidController::class, 'store'])->
 
 
 
-Route::get('/entrants/{kid}', [App\Http\Controllers\KidController::class, 'show'])->name('kids.gallery');
 
-Route::get('/entrants/{kid}/add', [App\Http\Controllers\KidPhotoController::class, 'create'])->name('kids.photo.create');
-Route::post('/entrants/{kid}/photo', [App\Http\Controllers\KidPhotoController::class, 'store'])->name('kids.photo.store');
+Route::get('/entrants/{user}/add', [App\Http\Controllers\KidPhotoController::class, 'create'])->name('kids.photo.create');
+Route::post('/entrants/{user}/photo', [App\Http\Controllers\KidPhotoController::class, 'store'])->name('kids.photo.store');
 
 
-Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
-
-Route::post('/admin/photos/{photo}/deny', [App\Http\Controllers\AdminController::class, 'denyPhoto'])->name('admin.photos.deny');
-Route::post('/admin/photos/{photo}/approve', [App\Http\Controllers\AdminController::class, 'approvePhoto'])->name('admin.photos.approve');
 
 
 Route::get('/rewards', [App\Http\Controllers\RewardController::class, 'index'])->name('admin.rewards');
@@ -58,12 +53,21 @@ Route::get('/rewards/add', [App\Http\Controllers\RewardController::class, 'creat
 Route::post('/rewards', [App\Http\Controllers\RewardController::class, 'store'])->name('admin.rewards.store');
 //Route::get('/entrants/{kid}', [App\Http\Controllers\KidController::class, 'show'])->name('kids.gallery');
 
-//rewards per entrant
-Route::get('/entrants/{kid}/rewards', [App\Http\Controllers\KidRewardController::class, 'index'])->name('entrant.rewards');
-Route::post('/entrants/{kid}/rewards/claim/{reward}', [App\Http\Controllers\KidRewardController::class, 'claim_reward'])->name('entrant.rewards.claim');
 
 
 Route::get('/gallery', function () {
     $data['photos'] = Photo::where('approved', 1)->get();
     return view('gallery.national', $data);
 })->name('gallery')->middleware('auth');
+
+// used Routes
+
+//rewards per entrant
+Route::get('/entrants/{user}/rewards', [App\Http\Controllers\KidRewardController::class, 'index'])->name('entrant.rewards');
+Route::post('/entrants/{user}/rewards/claim/{reward}', [App\Http\Controllers\KidRewardController::class, 'claim_reward'])->name('entrant.rewards.claim');
+
+
+//admin routes 
+Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home');
+Route::post('/admin/photos/{photo}/deny', [App\Http\Controllers\AdminController::class, 'denyPhoto'])->name('admin.photos.deny');
+Route::post('/admin/photos/{photo}/approve', [App\Http\Controllers\AdminController::class, 'approvePhoto'])->name('admin.photos.approve');

@@ -25,8 +25,8 @@ class Photo extends Model
         }
     }
 
-    public function kid()
+    public function user()
     {
-        return $this->belongsTo(Kid::class);
+        return $this->belongsTo(User::class);
     }
 }
