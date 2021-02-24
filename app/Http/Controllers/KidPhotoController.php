@@ -52,7 +52,7 @@ class KidPhotoController extends Controller
         ];
 
         Mail::to('kutaropogi@gmail.com')->send(new NotifyAdminNewPhoto($emailDetails));
-        return redirect()->route('kids', $user);
+        return redirect()->route('kids');
     }
 
     /**

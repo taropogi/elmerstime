@@ -10,13 +10,14 @@ class ClaimedReward extends Model
 
     protected $fillable = [
         'reward_id',
-        'stars_used'
+        'stars_used',
+        'confirmed'
     ];
     use HasFactory;
 
     public function claimed_by()
     {
-        return $this->belongsTo(Kid::class);
+        return $this->belongsTo(User::class);
     }
 
 

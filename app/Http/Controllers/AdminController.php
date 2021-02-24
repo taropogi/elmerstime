@@ -48,7 +48,7 @@ class AdminController extends Controller
         $photo->approved_at = Carbon::now();
         $photo->save();
 
-        Mail::to($photo->user->email)->send(new PhotoApproved());
+        Mail::to($photo->user->email)->later(now()->addMinutes(2), new PhotoApproved());
 
 
         return back();

@@ -42,7 +42,7 @@ Route::post('/entrants', [App\Http\Controllers\KidController::class, 'store'])->
 
 
 
-Route::get('/entrants/{user}/add', [App\Http\Controllers\KidPhotoController::class, 'create'])->name('kids.photo.create');
+Route::get('/entrants/{user:username}/add', [App\Http\Controllers\KidPhotoController::class, 'create'])->name('kids.photo.create');
 Route::post('/entrants/{user}/photo', [App\Http\Controllers\KidPhotoController::class, 'store'])->name('kids.photo.store');
 
 

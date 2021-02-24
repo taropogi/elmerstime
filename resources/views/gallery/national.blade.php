@@ -82,7 +82,7 @@
 
                     <div class="card-body">
                         <p class="card-text">
-                            Image description
+                            {{ $photo->user->name }}
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">

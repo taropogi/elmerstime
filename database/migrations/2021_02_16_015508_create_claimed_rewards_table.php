@@ -18,6 +18,7 @@ class CreateClaimedRewardsTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('reward_id')->constrained()->onDelete('cascade');
             $table->integer('stars_used')->nullable();
+            $table->boolean('confirmed')->default(false);
             $table->timestamps();
         });
     }
