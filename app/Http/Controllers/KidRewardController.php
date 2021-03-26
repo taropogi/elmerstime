@@ -25,11 +25,19 @@ class KidRewardController extends Controller
         $stars_required = $reward->stars_required;
         if ($avialable_stars > 0 && $avialable_stars >= $stars_required) {
 
-
+            /*
             $user->claimed_rewards()->create([
                 'reward_id' => $reward->id,
                 'stars_used' => $reward->stars_required
             ]);
+            */
+
+            $user->claimed_rewards()->attach(
+                $reward->id,
+                [
+                    'stars_used' => $reward->stars_required
+                ]
+            );
         }
 
         return back();

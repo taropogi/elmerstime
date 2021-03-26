@@ -30,10 +30,7 @@ class AdminController extends Controller
 
     public function denyPhoto(Photo $photo)
     {
-        $photo->approved = 0;
-        $photo->evaluated = 1;
-
-        $photo->save();
+        $photo->deny();
 
         Mail::to($photo->user->email)->send(new PhotoDenied());
 
@@ -43,10 +40,7 @@ class AdminController extends Controller
 
     public function approvePhoto(Photo $photo)
     {
-        $photo->approved = 1;
-        $photo->evaluated = 1;
-        $photo->approved_at = Carbon::now();
-        $photo->save();
+        $photo->approve();
 
         Mail::to($photo->user->email)->send(new PhotoApproved());
 

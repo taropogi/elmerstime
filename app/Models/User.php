@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function claimed_rewards_total()
     {
-        return $this->claimed_rewards->sum('stars_used');
+        return $this->claimed_rewards()->sum('stars_used');
     }
 
     public function available_stars()
@@ -61,7 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function claimed_rewards()
     {
-        return $this->hasMany(ClaimedReward::class);
+        return $this->belongsToMany(Reward::class, 'claimed_rewards')->withTimeStamps();
     }
 
     public function photos()

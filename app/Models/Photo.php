@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Photo extends Model
 {
@@ -28,5 +29,21 @@ class Photo extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function approve()
+    {
+        $this->approved = 1;
+        $this->evaluated = 1;
+        $this->approved_at = Carbon::now();
+        $this->save();
+    }
+
+    public function deny()
+    {
+        $this->approved = 0;
+        $this->evaluated = 1;
+
+        $this->save();
     }
 }

@@ -20,8 +20,9 @@ class Reward extends Model
 
 
 
+
     public function claimed_rewards()
     {
-        return $this->hasMany(ClaimedReward::class);
+        return $this->belongsToMany(Reward::class, 'claimed_rewards')->withTimeStamps();
     }
 }
